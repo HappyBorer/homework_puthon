@@ -36,4 +36,13 @@ for x in range(2):
 - x=-34; y=-30 -> 3
 """
 
+x, y = int(input('Введите x\n')), int(input('Введите y\n'))
 
+if x > 0 and y > 0:
+    print('Это первая плоскость')
+elif x < 0 and y > 0:
+    print('Это вторая плоскость')
+elif x < 0 and y < 0:
+    print('Это третья  плоскость')
+else:
+    print('Это четвертая плоскость')
