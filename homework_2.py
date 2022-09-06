@@ -1,3 +1,4 @@
+import random
 """
 Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 Пример:
@@ -41,3 +42,16 @@
 Найдите произведение элементов на указанных позициях. Позиции хранятся в 
 файле file.txt в одной строке одно число.
 """
+number_n = int(input())
+kit_digit = []
+for i in range(number_n):
+    kit_digit.append(random.randint(-number_n, number_n))
+print(kit_digit)
+with open('index_hw2.txt', 'w') as file:
+    for i in range(random.randint(2, number_n)):
+        file.write(str(random.randint(0, len(kit_digit)-1)) + '\n')
+work = 1
+with open('index_hw2.txt', 'r') as index:
+    for i in index:
+        work *= kit_digit[int(i)]
+print(f'Произведение элементов на указанных позициях в файле {work}')
