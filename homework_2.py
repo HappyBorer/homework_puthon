@@ -64,7 +64,7 @@ list_number = []
 for i in range(counter):
     list_number.append(randint(1, 100))
 print(list_number)
-for i in range(counter):
-    index = randint(0, len(list_number)-1)
+for i in range(counter-1):
+    index = randint(i+1, len(list_number)-1)
     list_number[i], list_number[index] = list_number[index], list_number[i]
 print(list_number)
