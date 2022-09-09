@@ -15,6 +15,9 @@ from random import *
 #     total += int(number % 10)
 #     number = number // 10
 # print(f'Сумма всех цифр вещественного числа равна {total}')
+# Решение задачи в однустрочку
+# print(sum([int(i) for i in input() if i != '.']))
+
 
 """
 Напишите программу, которая принимает на вход число N и выдает набор произведений чисел от 1 до N.
@@ -23,11 +26,10 @@ from random import *
 """
 # number = int(input('Введите число:\n'))
 # kit = []
+# total = 1
 # for i in range(1, number+1):
-#     total = 1
-#     for j in range(1, i+1):
-#         total *= j
-#     kit.append(total)
+#     kit.append(total * i)
+#     total *= i
 # print(kit)
 """
 Задайте список из n чисел последовательности $(1+\frac 1 n)^n$ и выведите на экран их сумму.
@@ -59,12 +61,12 @@ from random import *
 """
 Реализуйте алгоритм перемешивания списка.
 """
-counter = int(input('Введите размер списка:\n'))
-list_number = []
-for i in range(counter):
-    list_number.append(randint(1, 100))
-print(list_number)
-for i in range(counter-1):
-    index = randint(i+1, len(list_number)-1)
-    list_number[i], list_number[index] = list_number[index], list_number[i]
-print(list_number)
+# counter = int(input('Введите размер списка:\n'))
+# list_number = []
+# for i in range(counter):
+#     list_number.append(randint(1, 100))
+# print(list_number)
+# for i in range(counter-1):
+#     index = randint(i+1, len(list_number)-1)
+#     list_number[i], list_number[index] = list_number[index], list_number[i]
+# print(list_number)
