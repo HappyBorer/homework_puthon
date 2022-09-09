@@ -33,7 +33,7 @@ def work_of_steam(kit):
 Пример:
 - [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 '''
-list_numbers = [float(input('Enter the element: ')) for _ in range(int(input('Enter the number of element: ')))]
+# list_numbers = [float(input('Enter the element: ')) for _ in range(int(input('Enter the number of element: ')))]
 
 def difference_min_max_factional_part(some_list):
     new_list = []
@@ -43,5 +43,20 @@ def difference_min_max_factional_part(some_list):
             new_list.append(round(i - int(i), sigans))
     return max(new_list) - min(new_list)
 
-print('The difference between the maximum and minimum fractional part of the element is equal', end=' ')
-print(difference_min_max_factional_part(list_numbers))
+# print('The difference between the maximum and minimum fractional part of the element is equal', end=' ')
+# print(difference_min_max_factional_part(list_numbers))
+
+'''
+Напишите программу, которая будет преобразовывать десятичное число в двоичное.
+Пример:
+- 45 -> 101101
+- 3 -> 11
+- 2 -> 10
+'''
+
+number = int(input('Enter a number: '))
+double_number = ''
+while number > 0:
+    double_number = str(number % 2) + double_number
+    number = number // 2
+print('In binary calculus', double_number)
