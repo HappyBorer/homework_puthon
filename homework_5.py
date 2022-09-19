@@ -120,65 +120,104 @@ b) Подумайте как наделить бота ""интеллектом"
 '''
 Создайте программу для игры в ""Крестики-нолики"".
 '''
-from sympy import Symbol
-def field(lst):
-    fld = [lst[i] for i in range(3)]
-    fld_1 = [lst[i] for i in range(3, 6)]
-    fld_2 = [lst[i] for i in range(6, 9)]
-    print(fld)
-    print(fld_1)
-    print(fld_2)
+# from sympy import Symbol
+# def field(lst):
+#     fld = [lst[i] for i in range(3)]
+#     fld_1 = [lst[i] for i in range(3, 6)]
+#     fld_2 = [lst[i] for i in range(6, 9)]
+#     print(fld)
+#     print(fld_1)
+#     print(fld_2)
+#
+# def victory_comb(lst):
+#     flag = False
+#     if (lst[0] == lst[1] == lst[2] or
+#         lst[3] == lst[4] == lst[5] or
+#         lst[6] == lst[7] == lst[8] or
+#         lst[0] == lst[3] == lst[6] or
+#         lst[1] == lst[4] == lst[7] or
+#         lst[2] == lst[5] == lst[8] or
+#         lst[0] == lst[4] == lst[8] or
+#         lst[2] == lst[4] == lst[6]):
+#         flag = True
+#     return flag
+#
+# counter = 0
+#
+# field_list = [i for i in range(1, 10)]
+# field(field_list)
+# player_1 = Symbol('X')
+# player_2 = Symbol('O')
+# flag = True
+# while counter != 9:
+#     j = 0
+#     if flag:
+#         print('The course of the first player')
+#         j = int(input('Select the field number: '))
+#         if j < 0 or j > 9:
+#             print('There is no such field! Repeat the input of the field!')
+#             continue
+#         elif field_list[j - 1] == 'X' or field_list[j - 1] == 'O':
+#             print('The field is busy! Choose another!')
+#             continue
+#         field_list[j - 1] = player_1
+#         flag = False
+#     else:
+#         print('The course of the second player')
+#         j = int(input('Select the field number: '))
+#         if j < 0 or j > 9:
+#             print('There is no such field! Repeat the input of the field!')
+#             continue
+#         elif field_list[j - 1] == 'X' or field_list[j - 1] == 'O':
+#             print('The field is busy! Choose another!')
+#             continue
+#         field_list[j - 1] = player_2
+#         flag = True
+#     field(field_list)
+#     if victory_comb(field_list):
+#         print('Won', end=' ')
+#         if flag:
+#             print('second player!')
+#         else:
+#             print('first player!')
+#         break
+#     counter += 1
 
-def victory_comb(lst):
-    flag = False
-    if (lst[0] == lst[1] == lst[2] or
-        lst[3] == lst[4] == lst[5] or
-        lst[6] == lst[7] == lst[8] or
-        lst[0] == lst[3] == lst[6] or
-        lst[1] == lst[4] == lst[7] or
-        lst[2] == lst[5] == lst[8] or
-        lst[0] == lst[4] == lst[8] or
-        lst[2] == lst[4] == lst[6]):
-        flag = True
-    return flag
-
-counter = 0
-
-field_list = [i for i in range(1, 10)]
-field(field_list)
-player_1 = Symbol('X')
-player_2 = Symbol('O')
-flag = True
-while counter != 9:
-    j = 0
-    if flag:
-        print('The course of the first player')
-        j = int(input('Select the field number: '))
-        if j < 0 or j > 9:
-            print('There is no such field! Repeat the input of the field!')
-            continue
-        elif field_list[j - 1] == 'X' or field_list[j - 1] == 'O':
-            print('The field is busy! Choose another!')
-            continue
-        field_list[j - 1] = player_1
-        flag = False
-    else:
-        print('The course of the second player')
-        j = int(input('Select the field number: '))
-        if j < 0 or j > 9:
-            print('There is no such field! Repeat the input of the field!')
-            continue
-        elif field_list[j - 1] == 'X' or field_list[j - 1] == 'O':
-            print('The field is busy! Choose another!')
-            continue
-        field_list[j - 1] = player_2
-        flag = True
-    field(field_list)
-    if victory_comb(field_list):
-        print('Won', end=' ')
-        if flag:
-            print('second player!')
+'''
+Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+'''
+def my_coding(data):
+    count = 1
+    encoded_line = ''
+    for i in range(len(data)):
+        if i + 1 != len(data) and data[i] == data[i + 1]:
+            count += 1
         else:
-            print('first player!')
-        break
-    counter += 1
+            if count != 1:
+                encoded_line += str(count) + data[i]
+                count = 1
+            else:
+                encoded_line += data[i]
+    return encoded_line
+
+def my_decode(data):
+    count = 1
+    decode_string = ''
+    for element in data:
+        if element.isdigit():
+            count = int(element)
+        else:
+            decode_string += element * count
+            count = 1
+    return decode_string
+
+with open('hw_5.txt', 'r') as data:
+    my_string = data.read()
+
+with open('hw_5_1.txt', 'w') as data:
+    data.write(my_coding(my_string))
+
+# with open('hw_5_1.txt', 'r') as data:
+#     my_str = data.read()
+# with open('hw_5_2.txt', 'w') as data:
+#     data.write(my_decode(my_str))
