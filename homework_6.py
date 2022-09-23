@@ -55,30 +55,47 @@ def first_close(expa, first_op):
             break
     return first_cl
 
-import re
-string = input()
-exp = re.findall(r'\d+\.?\d+?|[\*\-\/\+]?|\d+|\(?\)?', string)
-exp = [i for i in exp if i not in '']
-for i in range(len(exp)):
-    if '.' in exp[i]:
-        exp[i] = float(exp[i])
-    elif exp[i].isdigit():
-        exp[i] = int(exp[i])
-while len(exp) > 1:
-    if '(' in exp:
-        prior = []
-        for i in range(first_open(exp) + 1, first_close(exp, first_open(exp))):
-            prior.append(exp[i])
-        for i in range(len(prior)):
-            for j in range(first_open(exp) + 1, first_close(exp, first_open(exp))):
-                if exp[j] == prior[i]:
-                    exp.pop(j)
-        while len(prior) > 1:
-            prior = operations(prior)
+# import re
+# string = input('Enter an example: ')
+# exp = re.findall(r'\d+\.?\d+?|[\*\-\/\+]?|\d+|\(?\)?', string)
+# exp = [i for i in exp if i not in '']
+# for i in range(len(exp)):
+#     if '.' in exp[i]:
+#         exp[i] = float(exp[i])
+#     elif exp[i].isdigit():
+#         exp[i] = int(exp[i])
+# while len(exp) > 1:
+#     if '(' in exp:
+#         prior = []
+#         for i in range(first_open(exp) + 1, first_close(exp, first_open(exp))):
+#             prior.append(exp[i])
+#         for i in range(len(prior)):
+#             for j in range(first_open(exp) + 1, first_close(exp, first_open(exp))):
+#                 if exp[j] == prior[i]:
+#                     exp.pop(j)
+#         while len(prior) > 1:
+#             prior = operations(prior)
+#
+#         exp.pop(first_close(exp, first_open(exp)))
+#         exp[first_open(exp)] = prior[0]
+#     else:
+#         exp = operations(exp)
+#
+# print(exp[0])
 
-        exp.pop(first_close(exp, first_open(exp)))
-        exp[first_open(exp)] = prior[0]
-    else:
-        exp = operations(exp)
-
-print(exp[0])
+'''
+Дана последовательность чисел. Получить список уникальных элементов заданной последовательности.
+Пример:
+[1, 2, 3, 5, 1, 5, 3, 10] => [2, 10]
+'''
+input_data = input('Enter the elements through a comma: ').split(', ')
+unique_numbers = []
+for i in range(len(input_data)):
+    flag = True
+    for j in range(len(input_data)):
+        if i !=j and input_data[i] == input_data[j]:
+            flag = False
+            break
+    if flag:
+        unique_numbers.append(input_data[i])
+print(unique_numbers)
