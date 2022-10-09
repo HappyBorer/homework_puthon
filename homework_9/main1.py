@@ -128,3 +128,34 @@ biggest_dict(**kwargs), которая принимает неограничен
 #     return input_dict
 # my_dict = biggest_dict(my_dict, Москва=495, One=1)
 # print(biggest_dict(my_dict, **new_dict))
+
+'''
+Дана строка в виде случайной последовательности чисел от 0 до 9.
+
+Требуется создать словарь, который в качестве ключей будет принимать данные числа 
+(т. е. ключи будут типом int), а в качестве значений – количество этих чисел в 
+имеющейся последовательности. Для построения словаря создайте функцию count_it(sequence), 
+принимающую строку из цифр. Функция должна возвратить словарь из 3-х самых часто встречаемых чисел.
+'''
+
+string = '4 6 5 6 4 28 87 23 98 45 78 78 6 3 5 58 65 78 98 98 4 4 5 5 5 6 6'
+def count_it(sequence):
+    numbers = [int(i) for i in sequence.split()]
+    tmp_dict = dict()
+    for item in numbers:
+        count = 1
+        for i in range(numbers.index(item) + 1, len(numbers)):
+            if item == numbers[i]:
+                count += 1
+        tmp_dict[item] = count
+    new_dict = dict()
+    for _ in range(3):
+        max_value = max(tmp_dict.values())
+        for k, v in tmp_dict.items():
+            if v == max_value:
+                new_dict[k] = max_value
+                tmp_dict.pop(k)
+                break
+    return new_dict
+
+print(count_it(string))
