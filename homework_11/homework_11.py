@@ -54,12 +54,66 @@ def send_sms(*obj):
             print(f'Не удалось отправить сообщение абоненту: {i.get_name()}')
 
 
-person1 = Person('Ivan', 'Ivanovich', 'Ivanov', {'private': 123, 'work': 456})
-person2 = Person('Ivan', 'Petrovich', 'Petrov', {'private': 789})
-person3 = Person('Ivan', 'Petrovich', 'Sidorov', {'work': 789})
-person4 = Person('John', 'Unknown', 'Doe', {})
-company1 = Company('Bell', 'OOO', {'contact': 111}, person3, person4)
-company2 = Company('Cell', 'AO', {'non_contact': 222}, person2, person3)
-company3 = Company('Dell', 'Ltd', {'non_contact': 333}, person2, person4)
-send_sms(person1, person2, person3, person4, company1, company2, company3)
+# person1 = Person('Ivan', 'Ivanovich', 'Ivanov', {'private': 123, 'work': 456})
+# person2 = Person('Ivan', 'Petrovich', 'Petrov', {'private': 789})
+# person3 = Person('Ivan', 'Petrovich', 'Sidorov', {'work': 789})
+# person4 = Person('John', 'Unknown', 'Doe', {})
+# company1 = Company('Bell', 'OOO', {'contact': 111}, person3, person4)
+# company2 = Company('Cell', 'AO', {'non_contact': 222}, person2, person3)
+# company3 = Company('Dell', 'Ltd', {'non_contact': 333}, person2, person4)
+# send_sms(person1, person2, person3, person4, company1, company2, company3)
 
+class MinStart:
+    def __init__(self):
+        self.numbers = []
+
+    def add_number(self, number):
+        self.numbers.append(number)
+
+    def result(self):
+        try:
+            return min(self.numbers)
+        except:
+            return None
+
+
+class MaxStart:
+    def __init__(self):
+        self.numbers = []
+
+    def add_number(self, number):
+        self.numbers.append(number)
+
+    def result(self):
+        try:
+            return max(self.numbers)
+        except:
+            return None
+
+
+class AverageStart:
+    def __init__(self):
+        self.numbers = []
+
+    def add_number(self, number):
+        self.numbers.append(number)
+
+    def result(self):
+        try:
+            return sum(self.numbers) / len(self.numbers)
+        except:
+            return None
+
+
+values = [1, 2, 4, 5]
+
+mins = MinStart()
+maxs = MaxStart()
+average = AverageStart()
+
+for i in values:
+    mins.add_number(i)
+    maxs.add_number(i)
+    average.add_number(i)
+
+print(mins.result(), maxs.result(), average.result())
